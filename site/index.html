@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sozialarbeitskarte Wien</title>
+<meta name="description" content="Interaktive Karte der sozialarbeiterischen Einrichtungen in Wien – Wohnungslosenhilfe, Jugendarbeit, Suchthilfe, Gewaltschutz und mehr, mit Beschreibungen, Trägern und Links.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='13' r='9' fill='%23c2410c'/><circle cx='16' cy='13' r='3.5' fill='white'/><path d='M16 31 9 19h14z' fill='%23c2410c'/></svg>">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="vendor/MarkerCluster.css">
+<link rel="stylesheet" href="app.css?v=2">
+</head>
+<body>
+<div id="app">
+  <aside id="side">
+    <header class="brand">
+      <div>
+        <h1>Sozialarbeitskarte <span>Wien</span></h1>
+        <p class="sub" id="countline">Einrichtungen der Sozialen Arbeit</p>
+      </div>
+      <div class="brand-btns"><button class="icon-btn mobile-only" id="mapBtn" title="Zur Karte" aria-label="Zur Karte">🗺</button><button class="icon-btn" id="aboutBtn" title="Über die Karte & Quellen" aria-label="Über die Karte">?</button></div>
+    </header>
+
+    <div class="search">
+      <input id="q" type="search" placeholder="Suchen: Name, Träger, Thema, Adresse …" autocomplete="off">
+    </div>
+
+    <div class="filters">
+      <div class="filter-head">
+        <span>Arbeitsfelder</span>
+        <button class="link-btn" id="resetBtn">Alle zeigen</button>
+      </div>
+      <div id="bereiche"></div>
+      <div class="row2">
+        <label>Bezirk
+          <select id="bez"><option value="">ganz Wien</option></select>
+        </label>
+        <label class="chk"><input type="checkbox" id="noloc" checked> auch ohne Standort</label>
+      </div>
+    </div>
+
+    <div id="bereichInfo" hidden></div>
+
+    <div class="list-head"><span id="listcount"></span>
+      <select id="sort"><option value="name">A–Z</option><option value="near">nahe Kartenmitte</option></select>
+    </div>
+    <ol id="list"></ol>
+  </aside>
+
+  <main id="mapwrap">
+    <div id="map"></div>
+    <button id="sideToggle" class="fab" aria-label="Liste &amp; Filter">☰ Liste &amp; Filter</button>
+  </main>
+
+  <section id="detail" aria-live="polite" hidden>
+    <button class="icon-btn close" id="closeDetail" aria-label="Schließen">✕</button>
+    <div id="detailBody"></div>
+  </section>
+</div>
+
+<dialog id="about">
+  <form method="dialog"><button class="icon-btn close" aria-label="Schließen">✕</button></form>
+  <div id="aboutBody"></div>
+</dialog>
+
+<script src="vendor/leaflet.js"></script>
+<script src="vendor/leaflet.markercluster.js"></script>
+<script src="app.js?v=2"></script>
+</body>
+</html>
