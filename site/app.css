@@ -111,3 +111,4 @@ dialog::backdrop { background: #0006; }
 .brand-btns { display: flex; gap: 6px; }
 .mobile-only { display: none; }
 @media (max-width: 860px) { .mobile-only { display: inline-block; } }
+.themen .chip.on .n { color: var(--muted); }
